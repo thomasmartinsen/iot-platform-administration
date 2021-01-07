@@ -1,0 +1,18 @@
+﻿@page "/customer"
+@inherits CustomerPageBase
+
+@if (Customer == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+
+    <h3>@Customer.Name</h3>
+
+    <table>
+        <tr>
+            <td>Name:@Customer.Name </td>
+        </tr>
+    </table>
+}
