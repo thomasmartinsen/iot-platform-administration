@@ -36,6 +36,7 @@ namespace iot_platform_administration
             services.AddRazorPages();
             services.AddServerSideBlazor();
             services.AddSingleton<CustomerService>();
+            services.AddSingleton<PointService>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

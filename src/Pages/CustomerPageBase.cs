@@ -7,13 +7,13 @@ namespace iot_platform_administration.Pages
     public class CustomerPageBase : ComponentBase
     {
         [Inject]
-        private CustomerService customerService { get; set; }
+        private CustomerService CustomerService { get; set; }
 
         public Data.Models.Ui.Customer Customer { get; set; }
         
         protected override async Task OnInitializedAsync()
         {
-            Customer = await customerService.GetAsync();
+            Customer = await CustomerService.GetAsync();
         }
     }
 }
