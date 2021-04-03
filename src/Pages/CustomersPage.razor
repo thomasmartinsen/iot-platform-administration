@@ -1,0 +1,30 @@
+﻿@page "/customers"
+@inherits CustomersPageBase
+
+<h3>Customers</h3>
+
+@if (Customers == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Client Id</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var customer in Customers)
+            {
+                <tr>
+                    <td><a @onclick="@(e => OnSelect(customer.Name))">@customer.Name</a></td>
+                    <td><a @onclick="@(e => OnSelect(customer.ClientId))">@customer.ClientId</a></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+}

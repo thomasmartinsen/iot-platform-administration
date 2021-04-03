@@ -1,21 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using iot_platform_administration.Data;
+using Dpx.Iot.Common.Entities;
+using Dpx.IotPlatformAdministration.Data;
 using Microsoft.AspNetCore.Components;
 
-namespace iot_platform_administration.Pages
+namespace Dpx.IotPlatformAdministration.Pages
 {
     public class PointsPageBase : ComponentBase
     {
+        public List<Point> Points { get; set; }
+
         [Inject]
         private NavigationManager NavigationManager { get; set; }
 
         [Inject]
         private PointService PointService { get; set; }
-
-        public List<Data.Models.Ui.Point> Points { get; set; }
 
         protected override async Task OnInitializedAsync()
         {

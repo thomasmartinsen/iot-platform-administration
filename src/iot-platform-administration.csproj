@@ -1,15 +1,25 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
-  <PropertyGroup>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
-    <UserSecretsId>aspnet-iot_platform_administration-6B7BE930-B533-45FE-8ED4-F03526C5376B</UserSecretsId>
-    <WebProject_DirectoryAccessLevelKey>1</WebProject_DirectoryAccessLevelKey>
-    <RootNamespace>iot_platform_administration</RootNamespace>
-  </PropertyGroup>
+    <PropertyGroup>
+        <TargetFramework>net5.0</TargetFramework>
+        <UserSecretsId>aspnet-iot_platform_administration-6B7BE930-B533-45FE-8ED4-F03526C5376B</UserSecretsId>
+        <WebProject_DirectoryAccessLevelKey>1</WebProject_DirectoryAccessLevelKey>
+        <RootNamespace>Dpx.IotPlatformAdministration</RootNamespace>
+        <AssemblyName>Dpx.IotPlatformAdministration</AssemblyName>
+    </PropertyGroup>
 
-  <ItemGroup>
-    <PackageReference Include="Bluefragments.Utilities" Version="5.0.67" />
-    <PackageReference Include="Microsoft.AspNetCore.Authentication.AzureAD.UI" Version="3.1.8" />
-  </ItemGroup>
+    <ItemGroup>
+        <PackageReference Include="Bluefragments.Iot.Common" Version="2.0.13" />
+        <PackageReference Include="Bluefragments.Utilities" Version="5.0.82" />
+        <PackageReference Include="Microsoft.AspNetCore.Authentication.AzureAD.UI" Version="3.1.8" />
+    </ItemGroup>
+
+    <PropertyGroup>
+        <StyleCopTreatErrorsAsWarnings>false</StyleCopTreatErrorsAsWarnings>
+        <CodeAnalysisRuleSet>bluefragments.ruleset</CodeAnalysisRuleSet>
+        <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+        <WarningsAsErrors />
+        <NoWarn>1701;1702;1705;NU1701</NoWarn>
+    </PropertyGroup>
 
 </Project>

@@ -1,7 +1,7 @@
-using Microsoft.AspNetCore.Hosting;
+﻿using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
 
-namespace iot_platform_administration
+namespace Dpx.IotPlatformAdministration
 {
     public class Program
     {
