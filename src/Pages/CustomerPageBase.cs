@@ -9,12 +9,20 @@ namespace Dpx.IotPlatformAdministration.Pages
     {
         public Customer Customer { get; set; }
 
+        [Parameter]
+        public string ClientId { get; set; }
+
         [Inject]
         private CustomerService CustomerService { get; set; }
-        
-        ////protected override async Task OnInitializedAsync()
-        ////{
-        ////    Customer = await CustomerService.GetAsync();
-        ////}
+
+        [Inject]
+        private NavigationManager NavigationManager { get; set; }
+
+        protected override async Task OnInitializedAsync()
+        {
+            Customer = await CustomerService.GetFromClientIdAsync(ClientId);
+        }
+
+        protected void OnCancel() => NavigationManager.NavigateTo($"customers");
     }
 }
