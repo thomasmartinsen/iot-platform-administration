@@ -29,11 +29,16 @@ namespace Dpx.IotPlatformAdministration
             services.AddAuthentication(AzureADDefaults.AuthenticationScheme)
                 .AddAzureAD(options => Configuration.Bind("AzureAd", options));
 
-            var url = Configuration.GetSection("Storage")["Url"] ?? throw new ArgumentNullException("StorageUrl");
-            var key = Configuration.GetSection("Storage")["Key"] ?? throw new ArgumentNullException("StorageKey");
-            var database = Configuration.GetSection("Storage")["Database"] ?? throw new ArgumentNullException("StorageDatabase");
-            ICosmosClient<DataEntityBase<string>, string> storage = new CosmosClient<DataEntityBase<string>, string>(database, key, url);
-            services.AddSingleton(storage);
+            var storageUrl = Configuration.GetSection("Storage")["Url"] ?? throw new ArgumentNullException("StorageUrl");
+            var storageKey = Configuration.GetSection("Storage")["Key"] ?? throw new ArgumentNullException("StorageKey");
+
+            var storageCoreDatabase = Configuration.GetSection("Storage")["CoreDatabase"] ?? throw new ArgumentNullException("StorageCoreDatabase");
+            ICosmosClient<DataEntityBase<string>, string> storageCore = new CosmosClient<DataEntityBase<string>, string>(storageCoreDatabase, storageKey, storageUrl);
+            services.AddSingleton(storageCore);
+
+            var storageMetricsDatabase = Configuration.GetSection("Storage")["MetricsDatabase"] ?? throw new ArgumentNullException("StorageMetricsDatabase");
+            ICosmosClient<DataEntityBase<string>, string> storageMetrics = new CosmosClient<DataEntityBase<string>, string>(storageMetricsDatabase, storageKey, storageUrl);
+            services.AddSingleton(storageMetrics);
 
             services.AddControllersWithViews(options =>
             {
@@ -46,10 +51,17 @@ namespace Dpx.IotPlatformAdministration
             services.AddRazorPages();
             services.AddServerSideBlazor();
 
-            services.AddSingleton<IIotClientFactory, IotClientFactory>();
-            services.AddSingleton<IPointRepository, PointRepository>();
-            services.AddSingleton<ICustomerRepository, CustomerRepository>();
-            services.AddSingleton<IVerticalRepository, VerticalRepository>();
+            IIotClientFactory iotClientFactory = new IotClientFactory();
+            services.AddSingleton(iotClientFactory);
+
+            IPointRepository pointRepository = new PointRepository(storageMetrics, iotClientFactory);
+            services.AddSingleton(pointRepository);
+
+            ICustomerRepository customerRepository = new CustomerRepository(storageCore);
+            services.AddSingleton(customerRepository);
+
+            IVerticalRepository verticalRepository = new VerticalRepository(storageCore);
+            services.AddSingleton(verticalRepository);
 
             services.AddSingleton<CustomerService>();
             services.AddSingleton<PointService>();

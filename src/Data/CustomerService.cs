@@ -41,9 +41,14 @@ namespace Dpx.IotPlatformAdministration.Data
             return data.SingleOrDefault(x => x.ClientId.ToLower() == clientId.ToLower());
         }
 
-        public async Task<Customer> UpdateAsync(Customer employee)
+        public async Task<Customer> UpdateAsync(Customer customer)
         {
-            return await Task.FromResult(employee);
+            customer.ThrowIfParameterIsNull(nameof(customer));
+
+            await customerRepository.UpsertAsync(customer);
+            data = null;
+
+            return await Task.FromResult(customer);
         }
     }
 }

@@ -9,15 +9,15 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="Bluefragments.Iot.Common" Version="2.0.13" />
-        <PackageReference Include="Bluefragments.Utilities" Version="5.0.82" />
-        <PackageReference Include="Microsoft.AspNetCore.Authentication.AzureAD.UI" Version="3.1.8" />
+        <PackageReference Include="Bluefragments.Iot.Common" Version="2.0.74" />
+        <PackageReference Include="Bluefragments.Utilities" Version="5.0.100" />
+        <PackageReference Include="Microsoft.AspNetCore.Authentication.AzureAD.UI" Version="5.0.7" />
     </ItemGroup>
 
     <PropertyGroup>
         <StyleCopTreatErrorsAsWarnings>false</StyleCopTreatErrorsAsWarnings>
         <CodeAnalysisRuleSet>bluefragments.ruleset</CodeAnalysisRuleSet>
-        <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+        <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
         <WarningsAsErrors />
         <NoWarn>1701;1702;1705;NU1701</NoWarn>
     </PropertyGroup>

@@ -21,7 +21,25 @@ namespace Dpx.IotPlatformAdministration.Pages
         protected override async Task OnInitializedAsync()
         {
             Customer = await CustomerService.GetFromClientIdAsync(ClientId);
+
+            if (Customer.CustomerTier == null)
+            {
+                Customer.CustomerTier = new CustomerTier
+                {
+                    CustomerTierLevel = 0,
+                    Users = 10,
+                    Points = 10,
+                };
+            }
         }
+
+        protected async Task UpdateAsync()
+        {
+            await CustomerService.UpdateAsync(Customer);
+            NavigationManager.NavigateTo($"customers");
+        }
+
+        protected async Task OnUpdate() => await UpdateAsync();
 
         protected void OnCancel() => NavigationManager.NavigateTo($"customers");
     }

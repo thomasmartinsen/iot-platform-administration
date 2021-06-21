@@ -24,6 +24,6 @@ namespace Dpx.IotPlatformAdministration.Pages
             Customers = await CustomerService.GetAsync();
         }
 
-        protected void OnSelect(string clientid) => NavigationManager.NavigateTo($"customer/{clientid}");
+        protected void OnSelect(string clientid) => NavigationManager.NavigateTo($"customer/{clientid.ToLower()}");
     }
 }

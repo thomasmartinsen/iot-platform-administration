@@ -7,18 +7,95 @@
 }
 else
 {
-
-
     <h3>@Customer.Name</h3>
 
-    <table>
-        <tr>
-            <td>Name:@Customer.Name </td>
-        </tr>
-        <tr>
-            <td>
-                <button style="margin-top: 20px;" @onclick="@(e => OnCancel())">OK</button>
-            </td>
-        </tr>
-    </table>
+    <EditForm Model="@Customer">
+        <table>
+            <tr>
+                <td><b>General</b></td>
+            </tr>
+            <tr>
+                <td>Name</td>
+                <td><InputText id="name" @bind-Value="Customer.Name" /></td>
+            </tr>
+            <tr>
+                <td>Client Id</td>
+                <td><InputText id="clientId" @bind-Value="Customer.ClientId" /></td>
+            </tr>
+            <tr>
+                <td>License Key</td>
+                <td><InputText id="licenseKey" @bind-Value="Customer.LicenseKey" /></td>
+            </tr>
+            <tr>
+                <td>Resource name</td>
+                <td><InputText id="resourceName" @bind-Value="Customer.ResourceName" /></td>
+            </tr>
+            <tr>
+                <td>ResourceGroup name</td>
+                <td><InputText id="resourceGroupName" @bind-Value="Customer.ResourceGroupName" /></td>
+            </tr>
+            <tr>
+                <td>Administrator</td>
+                <td><InputText id="administrator" @bind-Value="Customer.Administrator" /></td>
+            </tr>
+            <tr>
+                <td>Domains</td>
+                <td><InputText id="domains" @bind-Value="Customer.Domains" /></td>
+            </tr>
+            <tr>
+                <td><b>Gateway</b></td>
+            </tr>
+            <tr>
+                <td>Token</td>
+                <td><InputText id="gatewayToken" @bind-Value="Customer.Gateway.Token" /></td>
+            </tr>
+            <tr>
+                <td>Endpoint</td>
+                <td><InputText id="gatewayEndpoint" @bind-Value="Customer.Gateway.Endpoint" /></td>
+            </tr>
+            <tr>
+                <td><b>Datalake</b></td>
+            </tr>
+            <tr>
+                <td>Key</td>
+                <td><InputText id="datalakeKey" @bind-Value="Customer.DataLake.Key" /></td>
+            </tr>
+            <tr>
+                <td>Name</td>
+                <td><InputText id="datalakeName" @bind-Value="Customer.DataLake.Name" /></td>
+            </tr>
+            <tr>
+                <td><b>Vertical</b></td>
+            </tr>
+            <tr>
+                <td>Name</td>
+                <td><InputText id="verticalName" @bind-Value="Customer.Vertical.Name" /></td>
+            </tr>
+            <tr>
+                <td>Title</td>
+                <td><InputText id="verticalTitle" @bind-Value="Customer.Vertical.Title" /></td>
+            </tr>
+             <tr>
+                <td><b>Customer tier</b></td>
+            </tr>
+            <tr>
+                <td>Level</td>
+                <td><InputText id="customerTierLevel" @bind-Value="Customer.CustomerTier.CustomerTierLevel" /></td>
+            </tr>
+            <tr>
+                <td>Users</td>
+                <td><InputText id="customerTierUsers" @bind-Value="Customer.CustomerTier.Users" /></td>
+            </tr>
+            <tr>
+                <td>Points</td>
+                <td><InputText id="customerTierPoints" @bind-Value="Customer.CustomerTier.Points" /></td>
+            </tr>
+           <tr>
+                <td>
+                    <button style="margin-top: 20px;" @onclick="@(e => OnUpdate())">Update</button>
+                    <button style="margin-top: 20px;" @onclick="@(e => OnCancel())">Cancel</button>
+                </td>
+            </tr>
+        </table>
+    </EditForm>
 }

@@ -20,7 +20,7 @@ else
             @foreach (var customer in Customers)
             {
                 <tr>
-                    <td><a @onclick="@(e => OnSelect(customer.Name))">@customer.Name</a></td>
+                    <td><a @onclick="@(e => OnSelect(customer.ClientId))">@customer.Name</a></td>
                     <td><a @onclick="@(e => OnSelect(customer.ClientId))">@customer.ClientId</a></td>
                 </tr>
             }
